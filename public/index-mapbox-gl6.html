@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet / VectorTile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="../node_modules/mapbox-gl/dist/mapbox-gl.js"></script>
+    <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+    <script src="../node_modules/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+    <script>
+        var map = L.map('map', {
+            minZoom: 1,
+            maxZoom: 21,
+            // maxBounds: [[ 49.84 , -8.74 ], [ 60.9, 1.96 ]]
+        });
+        map.setView([ 48.9, 2.48 ], 10);
+
+        var token = "pk.eyJ1IjoibG93em9uZW5vc2UiLCJhIjoiY2pqNW9pM3BnMDh3YzNxc3d1NDBrOXJiYiJ9.fpJA4mi3Dau4qgEHiqdbpw";
+
+        var zoomstack = L.mapboxGL({
+            style : "https://s3-eu-west-1.amazonaws.com/tiles.os.uk/v2/styles/open-zoomstack-outdoor/style.json",
+            accessToken: 'no-token'
+        })
+        .addTo(map);
+
+    </script>
+</body>
+</html>

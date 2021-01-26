@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet / VectorTile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
+    <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="../node_modules/leaflet/dist/leaflet-src.js"></script>
+    <script src="../node_modules/leaflet.vectorgrid/dist/Leaflet.VectorGrid.bundled.js"></script>
+    <script src="../lib/parserMapBoxLikeVectorStyles.js"></script>
+    <script>
+        var map = L.map('map', {
+            minZoom: 1,
+            maxZoom: 21,
+            // maxBounds: [[ 49.84 , -8.74 ], [ 60.9, 1.96 ]]
+        });
+        map.setView([ 48.9, 2.48 ], 16);
+
+        parserMapboxLikeVectorStyles(
+            "../data/osm.json",
+            (data) => {
+                console.log(data);
+                var layer = L.vectorGrid.protobuf(
+                    "https://osm-lambda.tegola.io/v1/maps/osm/{z}/{x}/{y}.pbf",
+                    {
+                        rendererFactory: L.canvas.tile,
+                        interactive : true,
+                        attribution: "test",
+                        vectorTileLayerStyles: data
+                    }
+                ).addTo(map);
+
+                layer.on('click', function(e) {
+                    L.popup()
+                        //.setContent(e.layer.properties.name || e.layer.properties.type)
+                        .setContent(JSON.stringify(e.layer.properties))
+                        .setLatLng(e.latlng)
+                        .openOn(map);
+                    L.DomEvent.stop(e);
+                });
+        });
+
+    </script>
+</body>
+</html>
