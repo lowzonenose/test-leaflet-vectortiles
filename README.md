@@ -18,6 +18,15 @@ Liste des json :
 
 ![Image](exemple.png)
 
+**HOWTO**
+
+1. lancer le serveur local :
+```
+>$ node server.js
+```
+
+2. ouvrir le navigateur : http://localhost:9001
+
 ## 1. __mapbox-gl-leaflet__
 
 Utilisation d'une surcouche mapbox-gl (ISC © Mapbox).
