@@ -1,13 +1,15 @@
 {
     "version": 8,
     "name": "Style pyramide ecran",
-    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
-    "sprite": "https://vectortiles.ign.fr/demonstrateur/sprite/pictos_macarte",
-    "sprite": "https://vectortiles.ign.fr/demonstrateur/sprite/PlanIgn",  
+    "glyphs": "https://wxs.ign.fr/static/vectorTiles/fonts/{fontstack}/{range}.pbf",
+    "sprite": "https://wxs.ign.fr/static/vectorTiles/styles/PLAN.IGN/sprite/PlanIgn",  
     "sources": {
         "plan_ign": {
             "type": "vector",
-            "url": "https://vectortiles.ign.fr/rok4server/1.0.0/PLAN.IGN/metadata.json"
+            "tiles": [
+                "https://wxs.ign.fr/an7nvfzojv5wa96dsga5nk8w/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"
+            ],
+            "scheme": "tms"
         }
     },
     "transition": {

@@ -13,7 +13,6 @@ Liste des json :
 * [osm](data/osm.json)
 * [qwant](data/qwant.json)
 * [planign](data/planign.json)
-* [planign2](data/planign-correct.json)
 * [mapbox](data/mapbox.json)
 
 ![Image](exemple.png)
@@ -92,31 +91,13 @@ var gl = L.mapboxGL({
 
 > accessToken : token
 
-❌ **NOK**
-
-> style : "data/planign.json ",
-
-> accessToken: 'no-token'
-
-**Exception:**
-> Error: Source layer "oro_relief" does not exist on source "plan_ign" as specified by style layer "orographie : relief - 0m"
-
 ✔️ **OK**
 
 [exemple](public/index-mapbox-gl1.html)
 
-> style : "data/planign-correct.json ",
+> style : "data/planign.json ",
 
-> accessToken: token
-
-On decide donc de supprimer les identifiants du fichier de style qui ne sont pas associés dans le *metadata.json* :
-
-* oro_relief
-* toponyme_routier_borne
-* toponyme_routier_numero_lin
-* toponyme_routier_odonyme_lin
-
-⚠️ Par contre, il faut une clef MapBox : accessToken !? Surprenant...
+> accessToken: 'no-token'
 
 ✔️ **OK**
 
